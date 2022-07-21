@@ -1,1 +1,0 @@
-type KebabCase<S> = any;
