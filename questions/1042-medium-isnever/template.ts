@@ -1,1 +1,0 @@
-type IsNever = any

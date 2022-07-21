@@ -1,7 +1,7 @@
 import path from 'path'
 import fs from 'fs-extra'
 import { loadQuizes, resolveInfo } from './loader'
-import { REPO, toPlaygroundUrl, toQuizREADME, toRawREADME, toShareAnswerFull, toSolutionsFull } from './toUrl'
+import { REPO, toPlaygroundUrl, toQuestionsRawREADME, toQuizREADME, toRawREADME, toShareAnswerFull, toSolutionsFull } from './toUrl'
 import { defaultLocale, supportedLocales } from './locales'
 import { formatToCode } from './actions/utils/formatToCode'
 
@@ -11,7 +11,11 @@ export async function build() {
 
   // redirect homepage to github repo
   supportedLocales.filter(locale => locale !== defaultLocale).forEach((locale) => {
-    redirects.push([`/${locale}`, `${REPO}/blob/master/README.${locale}.md`, 302])
+    redirects.push([`/${locale}`, `${REPO}/blob/main/README.${locale}.md`, 302])
+  })
+
+  supportedLocales.forEach((locale) => {
+    redirects.push([`/raw/${locale}`, toQuestionsRawREADME(locale), 302])
   })
 
   for (const quiz of quizes) {

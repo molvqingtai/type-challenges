@@ -1,5 +1,5 @@
-import { DeepPartial } from 'utility-types'
-import type { getOctokit, context } from '@actions/github'
+import type { DeepPartial } from 'utility-types'
+import type { context, getOctokit } from '@actions/github'
 import type Core from '@actions/core'
 import type IO from '@actions/io'
 
@@ -21,7 +21,7 @@ export interface QuizMetaInfo {
   related?: string[]
 }
 
-export type Difficulty = 'warm-up' | 'easy' | 'medium' | 'hard' | 'extreme' | 'pending'
+export type Difficulty = 'warm' | 'easy' | 'medium' | 'hard' | 'extreme' | 'pending'
 
 export interface Quiz {
   no: number
